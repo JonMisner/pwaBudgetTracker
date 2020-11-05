@@ -9,11 +9,12 @@ const iconFiles = iconSizes.map(
 
 const staticFilesToPreCache = [
   "/",
-  "../routes/app.js",
   "./index.html",
   "./index.js",
   "./service-worker.js",
-  "./manifest.webmanifest",
+  "./db.js",
+  "./styles.css",
+  "./manifest.webmanifest"
 ].concat(iconFiles);
 
 
