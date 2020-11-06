@@ -15,7 +15,7 @@ request.onsuccess = ({target}) => {
    }
 };
 
-rewuest.onerror = (event) => {
+request.onerror = (event) => {
    console.log("Error!" + event.target.errorCode);
 };
 
