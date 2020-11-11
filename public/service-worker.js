@@ -2,11 +2,13 @@
 const CACHE_NAME = "static-cache-v2";
 const DATA_CACHE_NAME = "data-cache-v1";
 
+// variables to store the differnt icon sizes
 const iconSizes = ["72", "96", "128", "144", "152", "192", "384", "512"];
 const iconFiles = iconSizes.map(
   (size) => `/assets/images/icons/icon-${size}x${size}.png`
 );
 
+// files to cache (icons concat at the end)
 const staticFilesToPreCache = [
   "/",
   "./index.html",
@@ -26,15 +28,11 @@ self.addEventListener("install", function(evt) {
       return cache.addAll(staticFilesToPreCache);
     })
   );
-
   self.skipWaiting();
 });
 
-
-
 // fetch
 self.addEventListener("fetch", function(evt) {
-  //const {url} = evt.request.url;
   if (evt.request.url.includes("/api")) {
     evt.respondWith(
       caches.open(DATA_CACHE_NAME).then(cache => {
@@ -44,7 +42,6 @@ self.addEventListener("fetch", function(evt) {
             if (response.status === 200) {
               cache.put(evt.request, response.clone());
             }
-
             return response;
           })
           .catch(err => {
@@ -64,8 +61,6 @@ self.addEventListener("fetch", function(evt) {
     );
   }
 });
-
-
 
 // activate
 self.addEventListener("activate", function(evt) {

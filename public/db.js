@@ -1,3 +1,4 @@
+// for the various browsers
 const indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitINdexedDB || window.msIndexedDB || window.shimIndexedDB;
 
 let db;
@@ -52,4 +53,5 @@ function checkDatabase() {
    };
 }
 
+// listens for app to be online
 window.addEventListener("online", checkDatabase);
